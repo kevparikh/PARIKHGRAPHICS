@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Parikh Graphics – Creative Design Studio</title>
   
+  
   <style>
 /* ===================================
    PARIKH GRAPHICS — style.css v2
@@ -371,23 +372,16 @@ h1.hero-title span { color: var(--accent); }
 }
 
 /* Portfolio Grid */
+/* ── Portfolio Grid ── */
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
-}
-
-/* ── Portfolio Grid ──
-   Default: 4 cols for social/festival/product/invitation
-   Thumbnail category: 2 cols (16:9 ratio) shown via JS class swap
-*/
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  align-items: start; /* prevents blank stretching when mixed heights */
 }
 .portfolio-grid.thumb-view {
   grid-template-columns: repeat(2, 1fr);
+  align-items: start;
 }
 
 /* Portfolio Item */
@@ -828,28 +822,21 @@ footer {
       <!-- ═══ SOCIAL MEDIA ═══ -->
       <!-- To add image: replace the emoji div with <img src="images/social1.jpg" alt="Social Media Post 1"> -->
       <div class="port-item" data-cat="social">
-        <div class="port-img wi-1"><img src="ICE-CREAM.jpg" alt="Coffee Post"></div>
+        <div class="port-img wi-1">📱</div>
         <div class="port-info">
           <span class="port-title">Instagram Post</span>
           <span class="port-tag">Social Media</span>
         </div>
       </div>
       <div class="port-item" data-cat="social">
-        <div class="port-img wi-5"><img src="perfume post design2.jpg" alt="Coffee Post"></div>
+        <div class="port-img wi-5">📲</div>
         <div class="port-info">
           <span class="port-title">Facebook Banner</span>
           <span class="port-tag">Social Media</span>
         </div>
       </div>
       <div class="port-item" data-cat="social">
-        <div class="port-img wi-2"><img src="mouse-ad.jpg" alt="Coffee Post"></div>
-        <div class="port-info">
-          <span class="port-title">Story Design</span>
-          <span class="port-tag">Social Media</span>
-        </div>
-        </div>
-        <div class="port-item" data-cat="social">
-        <div class="port-img wi-2"><img src="toaster.jpg" alt="Coffee Post"></div>
+        <div class="port-img wi-2">🖼️</div>
         <div class="port-info">
           <span class="port-title">Story Design</span>
           <span class="port-tag">Social Media</span>
@@ -858,21 +845,21 @@ footer {
 
       <!-- ═══ FESTIVAL ═══ -->
       <div class="port-item" data-cat="festival">
-        <div class="port-img wi-1"><img src="REPUBLIC DAY- AUTO MOBILE_.png" alt="Coffee Post"></div>
+        <div class="port-img wi-1">🪔</div>
         <div class="port-info">
           <span class="port-title">Diwali Post</span>
           <span class="port-tag">Festival</span>
         </div>
       </div>
       <div class="port-item" data-cat="festival">
-        <div class="port-img wi-4"><img src="vasant panchami.png" alt="Coffee Post"></div>
+        <div class="port-img wi-4">🎉</div>
         <div class="port-info">
           <span class="port-title">Navratri Design</span>
           <span class="port-tag">Festival</span>
         </div>
       </div>
       <div class="port-item" data-cat="festival">
-        <div class="port-img wi-6"><img src="ICE-CREAM.jpg" alt="Coffee Post"></div>
+        <div class="port-img wi-6">🌈</div>
         <div class="port-info">
           <span class="port-title">Holi Wishes</span>
           <span class="port-tag">Festival</span>
@@ -881,21 +868,21 @@ footer {
 
       <!-- ═══ PRODUCT ═══ -->
       <div class="port-item" data-cat="product">
-        <div class="port-img wi-3"><img src="mouse-ad.jpg" alt="Coffee Post"></div>
+        <div class="port-img wi-3">📦</div>
         <div class="port-info">
           <span class="port-title">Product Banner</span>
           <span class="port-tag">Product</span>
         </div>
       </div>
       <div class="port-item" data-cat="product">
-        <div class="port-img wi-2"><img src="cat-and-fan.jpg" alt="Coffee Post"></div>
+        <div class="port-img wi-2">🛍️</div>
         <div class="port-info">
           <span class="port-title">Product Mockup</span>
           <span class="port-tag">Product</span>
         </div>
       </div>
       <div class="port-item" data-cat="product">
-        <div class="port-img wi-5"><img src="skin care.png" alt="Coffee Post"></div>
+        <div class="port-img wi-5">🏷️</div>
         <div class="port-info">
           <span class="port-title">Label Design</span>
           <span class="port-tag">Product</span>
@@ -904,59 +891,49 @@ footer {
 
       <!-- ═══ INVITATION ═══ -->
       <div class="port-item" data-cat="invitation">
-        <div class="port-img wi-6"><img src="ICE-CREAM.jpg" alt="Coffee Post"></div>
+        <div class="port-img wi-6">💍</div>
         <div class="port-info">
           <span class="port-title">Wedding Invite</span>
           <span class="port-tag">Invitation</span>
         </div>
       </div>
       <div class="port-item" data-cat="invitation">
-        <div class="port-img wi-4"><img src="ICE-CREAM.jpg" alt="Coffee Post"></div>
+        <div class="port-img wi-4">🎂</div>
         <div class="port-info">
           <span class="port-title">Birthday Card</span>
           <span class="port-tag">Invitation</span>
         </div>
       </div>
       <div class="port-item" data-cat="invitation">
-        <div class="port-img wi-1"><img src="ICE-CREAM.jpg" alt="Coffee Post"></div>
+        <div class="port-img wi-1">🎊</div>
         <div class="port-info">
           <span class="port-title">Event Invite</span>
           <span class="port-tag">Invitation</span>
         </div>
       </div>
 
-    <!-- ═══ THUMBNAILS ═══ -->
-<div class="port-item" data-cat="thumbnail">
-  <div class="port-img ratio-thumb wi-2"><img src="BGMI NEW FROZEN MODE.png" alt="BGMI Frozen Mode"></div>
-  <div class="port-info">
-    <span class="port-title">BGMI Frozen Mode</span>
-    <span class="port-tag">Thumbnail</span>
-  </div>
-</div>
-
-<div class="port-item" data-cat="thumbnail">
-  <div class="port-img ratio-thumb wi-3"><img src="MINECRAFT ignores sun.jpg" alt="Minecraft"></div>
-  <div class="port-info">
-    <span class="port-title">Minecraft Ignores Sun</span>
-    <span class="port-tag">Thumbnail</span>
-  </div>
-</div>
-
-<div class="port-item" data-cat="thumbnail">
-  <div class="port-img ratio-thumb wi-6"><img src="BGMI No Heal Allowed.jpg" alt="BGMI No Heal"></div>
-  <div class="port-info">
-    <span class="port-title">No Heal Allowed</span>
-    <span class="port-tag">Thumbnail</span>
-  </div>
-</div>
-
-<div class="port-item" data-cat="thumbnail">
-  <div class="port-img ratio-thumb wi-4"><img src="this is fast.jpg" alt="This is Fast"></div>
-  <div class="port-info">
-    <span class="port-title">This is Fast</span>
-    <span class="port-tag">Thumbnail</span>
-  </div>
-</div>
+      <!-- ═══ THUMBNAILS ═══ -->
+      <div class="port-item" data-cat="thumbnail">
+        <div class="port-img ratio-thumb wi-2">▶️</div>
+        <div class="port-info">
+          <span class="port-title">YouTube Thumbnail</span>
+          <span class="port-tag">Thumbnail</span>
+        </div>
+      </div>
+      <div class="port-item" data-cat="thumbnail">
+        <div class="port-img ratio-thumb wi-3">🎬</div>
+        <div class="port-info">
+          <span class="port-title">Channel Art</span>
+          <span class="port-tag">Thumbnail</span>
+        </div>
+      </div>
+      <div class="port-item" data-cat="thumbnail">
+        <div class="port-img ratio-thumb wi-6">📺</div>
+        <div class="port-info">
+          <span class="port-title">Video Cover</span>
+          <span class="port-tag">Thumbnail</span>
+        </div>
+      </div>
 
     </div><!-- /portfolio-grid -->
     <p class="work-note reveal">— Replace emoji placeholders with your actual design images —</p>
@@ -1031,6 +1008,7 @@ footer {
   <!-- Scroll To Top -->
   <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
 
+  
   
   <script>
 /* ===================================
