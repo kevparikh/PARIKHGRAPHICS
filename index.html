@@ -8,6 +8,7 @@
   
   
   
+  
   <style>
 /* ===================================
    PARIKH GRAPHICS — style.css v2
@@ -561,6 +562,14 @@ body.light .wi-6 { background: #dac8ea; }
 }
 .skill-pill:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: var(--shadow); }
 .skill-icon { font-size: 24px; margin-bottom: 8px; display: block; }
+/* PNG image icons inside skill-pill */
+.skill-icon img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 8px;
+}
 .skill-name { font-size: 12px; font-weight: 500; color: var(--text); }
 .skill-level { margin-top: 10px; height: 2px; background: var(--border); border-radius: 2px; overflow: hidden; }
 .skill-fill { height: 100%; background: var(--accent); border-radius: 2px; }
@@ -828,23 +837,22 @@ footer {
     <div class="portfolio-grid" id="portfolioGrid">
 
       <!-- ═══ SOCIAL MEDIA ═══ -->
-      <!-- To add image: replace the emoji div with <img src="images/social1.jpg" alt="Social Media Post 1"> -->
       <div class="port-item" data-cat="social">
-        <div class="port-img wi-1"><img src="ICE-CREAM.jpg" alt="BGMI"></div>
+        <div class="port-img wi-1"><img src="ICE-CREAM.jpg" alt="Instagram Post"></div>
         <div class="port-info">
           <span class="port-title">Instagram Post</span>
           <span class="port-tag">Social Media</span>
         </div>
       </div>
       <div class="port-item" data-cat="social">
-        <div class="port-img wi-5"><img src="healthcare.png" alt="BGMI"></div>
+        <div class="port-img wi-5"><img src="healthcare.png" alt="Facebook Banner"></div>
         <div class="port-info">
           <span class="port-title">Facebook Banner</span>
           <span class="port-tag">Social Media</span>
         </div>
       </div>
       <div class="port-item" data-cat="social">
-        <div class="port-img wi-2"><img src="coffee-post.jpg" alt="BGMI"></div>
+        <div class="port-img wi-2"><img src="coffee-post.jpg" alt="Story Design"></div>
         <div class="port-info">
           <span class="port-title">Story Design</span>
           <span class="port-tag">Social Media</span>
@@ -853,67 +861,67 @@ footer {
 
       <!-- ═══ FESTIVAL ═══ -->
       <div class="port-item" data-cat="festival">
-        <div class="port-img wi-1"><img src="REPUBLIC DAY- DENTAL.jpg" alt="BGMI"></div>
+        <div class="port-img wi-1"><img src="REPUBLIC DAY- DENTAL.jpg" alt="Republic Day"></div>
         <div class="port-info">
-          <span class="port-title">Diwali Post</span>
+          <span class="port-title">Republic Day</span>
           <span class="port-tag">Festival</span>
         </div>
       </div>
       <div class="port-item" data-cat="festival">
-        <div class="port-img wi-4"><img src="vasant panchami.png" alt="BGMI"></div>
+        <div class="port-img wi-4"><img src="vasant panchami.png" alt="Vasant Panchami"></div>
         <div class="port-info">
-          <span class="port-title">Navratri Design</span>
+          <span class="port-title">Vasant Panchami</span>
           <span class="port-tag">Festival</span>
         </div>
       </div>
       <div class="port-item" data-cat="festival">
-        <div class="port-img wi-6"><img src="happy janmashtmi.jpg" alt="BGMI"></div>
+        <div class="port-img wi-6"><img src="happy janmashtmi.jpg" alt="Janmashtami"></div>
         <div class="port-info">
-          <span class="port-title">Holi Wishes</span>
+          <span class="port-title">Janmashtami</span>
           <span class="port-tag">Festival</span>
         </div>
       </div>
 
       <!-- ═══ PRODUCT ═══ -->
       <div class="port-item" data-cat="product">
-        <div class="port-img wi-3"><img src="cat-and-fan.jpg" alt="BGMI"></div>
+        <div class="port-img wi-3"><img src="cat-and-fan.jpg" alt="Fan Ad"></div>
         <div class="port-info">
-          <span class="port-title">Product Banner</span>
+          <span class="port-title">Fan Ad</span>
           <span class="port-tag">Product</span>
         </div>
       </div>
       <div class="port-item" data-cat="product">
-        <div class="port-img wi-2"><img src="mouse-ad.jpg" alt="BGMI"></div>
+        <div class="port-img wi-2"><img src="mouse-ad.jpg" alt="Mouse Ad"></div>
         <div class="port-info">
-          <span class="port-title">Product Mockup</span>
+          <span class="port-title">Mouse Ad</span>
           <span class="port-tag">Product</span>
         </div>
       </div>
       <div class="port-item" data-cat="product">
-        <div class="port-img wi-5"><img src="perfume post design.jpg" alt="BGMI"></div>
+        <div class="port-img wi-5"><img src="perfume post design.jpg" alt="Perfume Post"></div>
         <div class="port-info">
-          <span class="port-title">Label Design</span>
+          <span class="port-title">Perfume Post</span>
           <span class="port-tag">Product</span>
         </div>
       </div>
 
       <!-- ═══ INVITATION ═══ -->
       <div class="port-item" data-cat="invitation">
-        <div class="port-img wi-6"><img src="haldi.jpg" alt="BGMI"></div>
+        <div class="port-img wi-6"><img src="haldi.jpg" alt="Haldi Invite"></div>
         <div class="port-info">
-          <span class="port-title">Wedding Invite</span>
+          <span class="port-title">Haldi Invite</span>
           <span class="port-tag">Invitation</span>
         </div>
       </div>
       <div class="port-item" data-cat="invitation">
-        <div class="port-img wi-4"><img src="ICE-CREAM.jpg" alt="BGMI"></div>
+        <div class="port-img wi-4"><img src="ICE-CREAM.jpg" alt="Birthday Card"></div>
         <div class="port-info">
           <span class="port-title">Birthday Card</span>
           <span class="port-tag">Invitation</span>
         </div>
       </div>
       <div class="port-item" data-cat="invitation">
-        <div class="port-img wi-1"><img src="ICE-CREAM.jpg" alt="BGMI"></div>
+        <div class="port-img wi-1"><img src="ICE-CREAM.jpg" alt="Event Invite"></div>
         <div class="port-info">
           <span class="port-title">Event Invite</span>
           <span class="port-tag">Invitation</span>
@@ -922,23 +930,23 @@ footer {
 
       <!-- ═══ THUMBNAILS ═══ -->
       <div class="port-item" data-cat="thumbnail">
-        <div class="port-img ratio-thumb wi-2"><img src="BGMI NEW FROZEN MODE.png" alt="BGMI"></div>
+        <div class="port-img ratio-thumb wi-2"><img src="BGMI NEW FROZEN MODE.png" alt="BGMI Frozen Mode"></div>
         <div class="port-info">
-          <span class="port-title">YouTube Thumbnail</span>
+          <span class="port-title">BGMI Frozen Mode</span>
           <span class="port-tag">Thumbnail</span>
         </div>
       </div>
       <div class="port-item" data-cat="thumbnail">
-        <div class="port-img ratio-thumb wi-3"><img src="GTA- ZERO TO 5 STARS.jpg" alt="BGMI"></div>
+        <div class="port-img ratio-thumb wi-3"><img src="GTA- ZERO TO 5 STARS.jpg" alt="GTA Zero to 5 Stars"></div>
         <div class="port-info">
-          <span class="port-title">Channel Art</span>
+          <span class="port-title">GTA Zero to 5 Stars</span>
           <span class="port-tag">Thumbnail</span>
         </div>
       </div>
       <div class="port-item" data-cat="thumbnail">
-        <div class="port-img ratio-thumb wi-6"><img src="this is fast.jpg" alt="BGMI"></div>
+        <div class="port-img ratio-thumb wi-6"><img src="this is fast.jpg" alt="This is Fast"></div>
         <div class="port-info">
-          <span class="port-title">Video Cover</span>
+          <span class="port-title">This is Fast</span>
           <span class="port-tag">Thumbnail</span>
         </div>
       </div>
@@ -982,12 +990,12 @@ footer {
       <h2 class="section-title reveal reveal-delay-1">Skills & Tools</h2>
     </div>
     <div class="skills-grid">
-      <div class="skill-pill reveal"><span class="skill-icon"><img src="1.png" alt="BGMI"></span><div class="skill-name">Canva</div><div class="skill-level"><div class="skill-fill" style="width: 52px; height: 52px;"></div></div></div>
-      <div class="skill-pill reveal reveal-delay-1"><span class="skill-icon"><img src="2.png" alt="BGMI"></span><div class="skill-name">Photoshop</div><div class="skill-level"><div class="skill-fill" style="width:80%"></div></div></div>
-      <div class="skill-pill reveal reveal-delay-2"><span class="skill-icon"><img src="3.png" alt="BGMI"></span><div class="skill-name">Illustrator</div><div class="skill-level"><div class="skill-fill" style="width:75%"></div></div></div>
-      <div class="skill-pill reveal reveal-delay-3"><span class="skill-icon"><img src="4.png" alt="BGMI"></span><div class="skill-name">Video Editing</div><div class="skill-level"><div class="skill-fill" style="width:55%"></div></div></div>
-      <div class="skill-pill reveal"><span class="skill-icon"><img src="6.png" alt="BGMI"></span><div class="skill-name">Social Media</div><div class="skill-level"><div class="skill-fill" style="width:90%"></div></div></div>
-      <div class="skill-pill reveal reveal-delay-1"><span class="skill-icon"><img src="5.png" alt="BGMI"></span><div class="skill-name">Reel Editing</div><div class="skill-level"><div class="skill-fill" style="width:50%"></div></div></div>
+      <div class="skill-pill reveal"><span class="skill-icon"><img src="1.png" alt="Canva"></span><div class="skill-name">Canva</div><div class="skill-level"><div class="skill-fill" style="width:92%"></div></div></div>
+      <div class="skill-pill reveal reveal-delay-1"><span class="skill-icon"><img src="2.png" alt="Photoshop"></span><div class="skill-name">Photoshop</div><div class="skill-level"><div class="skill-fill" style="width:80%"></div></div></div>
+      <div class="skill-pill reveal reveal-delay-2"><span class="skill-icon"><img src="3.png" alt="Illustrator"></span><div class="skill-name">Illustrator</div><div class="skill-level"><div class="skill-fill" style="width:75%"></div></div></div>
+      <div class="skill-pill reveal reveal-delay-3"><span class="skill-icon"><img src="4.png" alt="Video Editing"></span><div class="skill-name">Video Editing</div><div class="skill-level"><div class="skill-fill" style="width:55%"></div></div></div>
+      <div class="skill-pill reveal reveal-delay-4"><span class="skill-icon"><img src="6.png" alt="Social Media"></span><div class="skill-name">Social Media</div><div class="skill-level"><div class="skill-fill" style="width:90%"></div></div></div>
+      <div class="skill-pill reveal reveal-delay-5"><span class="skill-icon"><img src="5.png" alt="Reel Editing"></span><div class="skill-name">Reel Editing</div><div class="skill-level"><div class="skill-fill" style="width:50%"></div></div></div>
     </div>
   </section>
 
@@ -1014,6 +1022,7 @@ footer {
   <!-- Scroll To Top -->
   <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
 
+  
   
   
   
