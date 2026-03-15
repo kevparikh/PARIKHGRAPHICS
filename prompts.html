@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Design Prompts – Parikh Graphics</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:      #f7f4ef;
+      --bg2:     #f0ebe3;
+      --surface: #ffffff;
+      --border:  rgba(160,120,60,0.15);
+      --text:    #1a1610;
+      --text-dim:#888;
+      --accent:  #a07830;
+      --accent2: #c8a96e;
+      --shadow:  0 4px 24px rgba(0,0,0,0.08);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 48px;
+      display: flex; justify-content: space-between; align-items: center;
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .topbar-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px; font-weight: 700;
+      color: var(--accent); text-decoration: none;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .topbar-logo-icon {
+      width: 30px; height: 30px;
+      background: var(--accent); border-radius: 5px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 900; color: #fff;
+      font-family: 'Playfair Display', serif;
+    }
+    .topbar-right { display: flex; align-items: center; gap: 12px; }
+    .btn-home {
+      text-decoration: none; color: var(--text);
+      font-size: 13px; padding: 8px 18px;
+      border: 1.5px solid var(--border);
+      transition: all 0.25s;
+    }
+    .btn-home:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-ig {
+      text-decoration: none;
+      background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      color: #fff; font-size: 13px; font-weight: 500;
+      padding: 8px 18px; display: flex; align-items: center; gap: 6px;
+      transition: opacity 0.25s, transform 0.2s;
+    }
+    .btn-ig:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .page-hero {
+      padding: 64px 48px 48px;
+      text-align: center;
+      background: linear-gradient(to bottom, var(--bg2), var(--bg));
+    }
+    .page-hero-tag {
+      font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 12px; display: block;
+    }
+    .page-hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 48px); font-weight: 900;
+      line-height: 1.1; margin-bottom: 14px; color: var(--text);
+    }
+    .page-hero-title span { color: var(--accent); }
+    .page-hero-sub {
+      color: var(--text-dim); font-size: 15px; max-width: 480px;
+      margin: 0 auto 28px; line-height: 1.7;
+    }
+    .page-hero-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      color: #fff; text-decoration: none;
+      padding: 13px 28px; font-size: 13px; font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: opacity 0.25s, transform 0.2s;
+    }
+    .page-hero-cta:hover { opacity: 0.88; transform: translateY(-2px); }
+
+    /* ── FILTER ── */
+    .filter-wrap {
+      padding: 32px 48px 0;
+      display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
+    }
+    .tag-btn {
+      background: transparent;
+      border: 1.5px solid var(--border);
+      color: var(--text-dim);
+      padding: 7px 18px; font-size: 12px;
+      letter-spacing: 1px; text-transform: uppercase;
+      cursor: pointer; font-family: 'DM Sans', sans-serif;
+      transition: all 0.25s;
+    }
+    .tag-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .tag-btn.active {
+      background: var(--accent); border-color: var(--accent);
+      color: #fff; font-weight: 500;
+    }
+
+    /* ── POSTS GRID ── */
+    .posts-section { padding: 36px 48px 80px; }
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    /* ── POST CARD ── */
+    .post-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px; overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    }
+    .post-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: var(--accent2);
+    }
+    .post-card.hidden { display: none; }
+
+    /* Before / After */
+    .ba-wrap {
+      display: grid; grid-template-columns: 1fr 1fr;
+      position: relative;
+    }
+    .ba-side {
+      position: relative; overflow: hidden;
+      aspect-ratio: 1/1;
+    }
+    .ba-side img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .post-card:hover .ba-side img { transform: scale(1.04); }
+    .ba-label {
+      position: absolute; bottom: 8px; left: 8px;
+      background: rgba(0,0,0,0.55);
+      color: #fff; font-size: 9px; letter-spacing: 2px;
+      text-transform: uppercase; padding: 3px 8px;
+      border-radius: 3px;
+    }
+    .ba-divider {
+      position: absolute; left: 50%; top: 0; bottom: 0;
+      width: 2px; background: #fff; z-index: 2;
+      transform: translateX(-50%);
+    }
+    .ba-divider-icon {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 28px; height: 28px;
+      background: #fff; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; z-index: 3;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    /* Single image */
+    .single-img {
+      aspect-ratio: 1/1; overflow: hidden;
+    }
+    .single-img img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      transition: transform 0.4s ease;
+    }
+    .post-card:hover .single-img img { transform: scale(1.04); }
+
+    /* Card Body */
+    .post-body { padding: 18px 18px 14px; }
+    .post-category {
+      font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 6px; display: block;
+    }
+    .post-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px; font-weight: 700; color: var(--text);
+      margin-bottom: 8px; line-height: 1.3;
+    }
+    .post-prompt {
+      font-size: 12px; color: var(--text-dim); line-height: 1.7;
+      margin-bottom: 14px;
+      display: -webkit-box; -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .post-footer {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 12px; border-top: 1px solid var(--border);
+    }
+    .post-tag {
+      font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+      background: var(--bg2); color: var(--accent);
+      padding: 4px 10px; border-radius: 3px;
+    }
+    .post-ig-link {
+      display: flex; align-items: center; gap: 5px;
+      text-decoration: none; font-size: 12px; font-weight: 500;
+      color: #dc2743; transition: opacity 0.2s, transform 0.2s;
+    }
+    .post-ig-link:hover { opacity: 0.75; transform: translateX(2px); }
+
+    /* ── EMPTY STATE ── */
+    .empty-state {
+      text-align: center; padding: 60px 20px;
+      color: var(--text-dim); font-size: 14px;
+      display: none; grid-column: 1/-1;
+    }
+    .empty-state.show { display: block; }
+
+    /* ── BOTTOM CTA ── */
+    .bottom-cta {
+      background: var(--text);
+      padding: 64px 48px; text-align: center;
+    }
+    .bottom-cta-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(24px, 3vw, 36px); font-weight: 700;
+      color: #fff; margin-bottom: 10px;
+    }
+    .bottom-cta-title span { color: var(--accent2); }
+    .bottom-cta-sub {
+      color: rgba(255,255,255,0.55); font-size: 14px;
+      margin-bottom: 28px; max-width: 400px; margin-inline: auto;
+    }
+    .bottom-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-portfolio {
+      text-decoration: none; color: #fff;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      padding: 12px 24px; font-size: 13px;
+      letter-spacing: 0.5px; text-transform: uppercase;
+      transition: all 0.25s;
+    }
+    .btn-portfolio:hover { border-color: var(--accent2); color: var(--accent2); }
+    .btn-ig2 {
+      text-decoration: none;
+      background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      color: #fff; padding: 12px 24px; font-size: 13px; font-weight: 500;
+      letter-spacing: 0.5px; text-transform: uppercase;
+      transition: opacity 0.25s, transform 0.2s;
+    }
+    .btn-ig2:hover { opacity: 0.85; transform: translateY(-2px); }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(10px) scale(0.98); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .topbar { padding: 14px 20px; }
+      .page-hero { padding: 48px 20px 36px; }
+      .filter-wrap { padding: 24px 20px 0; }
+      .posts-section { padding: 28px 20px 60px; }
+      .posts-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .bottom-cta { padding: 48px 20px; }
+    }
+    @media (max-width: 540px) {
+      .posts-grid { grid-template-columns: 1fr; }
+      .topbar-logo span { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── TOP BAR ── -->
+  <header class="topbar">
+    <a href="index.html" class="topbar-logo">
+      <div class="topbar-logo-icon">PG</div>
+      <span>Parikh Graphics</span>
+    </a>
+    <div class="topbar-right">
+      <a href="index.html" class="btn-home">← Portfolio</a>
+      <a href="https://instagram.com/yourusername" target="_blank" class="btn-ig">
+        📸 Follow on Instagram
+      </a>
+    </div>
+  </header>
+
+  <!-- ── HERO ── -->
+  <div class="page-hero">
+    <span class="page-hero-tag">Design Inspiration</span>
+    <h1 class="page-hero-title">Behind Every<br/><span>Great Design</span></h1>
+    <p class="page-hero-sub">Real prompts, before & after results — see exactly how each design came to life. Follow on Instagram for daily inspiration.</p>
+    <a href="https://instagram.com/yourusername" target="_blank" class="page-hero-cta">📸 View All on Instagram</a>
+  </div>
+
+  <!-- ── FILTER ── -->
+  <div class="filter-wrap">
+    <button class="tag-btn active" data-tag="all">All</button>
+    <button class="tag-btn" data-tag="social">Social Media</button>
+    <button class="tag-btn" data-tag="festival">Festival</button>
+    <button class="tag-btn" data-tag="product">Product</button>
+    <button class="tag-btn" data-tag="thumbnail">Thumbnail</button>
+    <button class="tag-btn" data-tag="invitation">Invitation</button>
+  </div>
+
+  <!-- ── POSTS ── -->
+  <section class="posts-section">
+    <div class="posts-grid" id="postsGrid">
+
+      <!--
+      ════════════════════════════════════════
+      NAAVO POST ADD KARVA COPY KARO AA BLOCK:
+
+      BEFORE/AFTER:
+      <div class="post-card reveal" data-tag="social">
+        <div class="ba-wrap">
+          <div class="ba-side">
+            <img src="before.jpg" alt="Before">
+            <span class="ba-label">Before</span>
+          </div>
+          <div class="ba-divider"><div class="ba-divider-icon">⟷</div></div>
+          <div class="ba-side">
+            <img src="after.jpg" alt="After">
+            <span class="ba-label">After</span>
+          </div>
+        </div>
+        <div class="post-body">
+          <span class="post-category">Social Media</span>
+          <div class="post-title">Post Title</div>
+          <p class="post-prompt">Prompt: taro prompt yahan likho...</p>
+          <div class="post-footer">
+            <span class="post-tag">Social Media</span>
+            <a href="https://instagram.com/p/POST-ID" target="_blank" class="post-ig-link">View on IG →</a>
+          </div>
+        </div>
+      </div>
+
+      SINGLE IMAGE:
+      <div class="post-card reveal" data-tag="festival">
+        <div class="single-img">
+          <img src="image.jpg" alt="Post">
+        </div>
+        <div class="post-body">
+          ... same as above ...
+        </div>
+      </div>
+
+      data-tag options: social / festival / product / thumbnail / invitation
+      ════════════════════════════════════════
+      -->
+
+      <!-- POST 1 -->
+      <div class="post-card reveal" data-tag="social">
+        <div class="ba-wrap">
+          <div class="ba-side">
+            <img src="ICE-CREAM.jpg" alt="Before">
+            <span class="ba-label">Before</span>
+          </div>
+          <div class="ba-divider"><div class="ba-divider-icon">⟷</div></div>
+          <div class="ba-side">
+            <img src="ICE-CREAM.jpg" alt="After">
+            <span class="ba-label">After</span>
+          </div>
+        </div>
+        <div class="post-body">
+          <span class="post-category">Social Media</span>
+          <div class="post-title">Ice Cream Instagram Post</div>
+          <p class="post-prompt">Prompt: Vibrant summer ice cream post with bold typography, pastel pink background, product center-focused layout for Instagram feed.</p>
+          <div class="post-footer">
+            <span class="post-tag">Social Media</span>
+            <a href="https://instagram.com/p/REPLACE-POST-ID" target="_blank" class="post-ig-link">View on IG →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- POST 2 -->
+      <div class="post-card reveal reveal-d1" data-tag="product">
+        <div class="ba-wrap">
+          <div class="ba-side">
+            <img src="perfume post design.jpg" alt="Before">
+            <span class="ba-label">Before</span>
+          </div>
+          <div class="ba-divider"><div class="ba-divider-icon">⟷</div></div>
+          <div class="ba-side">
+            <img src="perfume post design2.jpg" alt="After">
+            <span class="ba-label">After</span>
+          </div>
+        </div>
+        <div class="post-body">
+          <span class="post-category">Product</span>
+          <div class="post-title">Perfume Post Design</div>
+          <p class="post-prompt">Prompt: Luxury perfume ad with dark moody background, gold particle effect, elegant serif typography, premium brand aesthetic.</p>
+          <div class="post-footer">
+            <span class="post-tag">Product</span>
+            <a href="https://instagram.com/p/REPLACE-POST-ID" target="_blank" class="post-ig-link">View on IG →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- POST 3 -->
+      <div class="post-card reveal reveal-d2" data-tag="festival">
+        <div class="single-img">
+          <img src="vasant panchami.png" alt="Vasant Panchami">
+        </div>
+        <div class="post-body">
+          <span class="post-category">Festival</span>
+          <div class="post-title">Vasant Panchami</div>
+          <p class="post-prompt">Prompt: Traditional Vasant Panchami design with yellow Saraswati theme, elegant floral borders, warm festive typography in Hindi and English.</p>
+          <div class="post-footer">
+            <span class="post-tag">Festival</span>
+            <a href="https://instagram.com/p/REPLACE-POST-ID" target="_blank" class="post-ig-link">View on IG →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- POST 4 -->
+      <div class="post-card reveal reveal-d3" data-tag="thumbnail">
+        <div class="single-img" style="aspect-ratio:16/9;">
+          <img src="BGMI NEW FROZEN MODE.png" alt="BGMI Thumbnail">
+        </div>
+        <div class="post-body">
+          <span class="post-category">YouTube Thumbnail</span>
+          <div class="post-title">BGMI Frozen Mode</div>
+          <p class="post-prompt">Prompt: Dramatic BGMI thumbnail with frozen ice effect, soldier in blizzard, bold white text with ice crack effect, high contrast dark background.</p>
+          <div class="post-footer">
+            <span class="post-tag">Thumbnail</span>
+            <a href="https://instagram.com/p/REPLACE-POST-ID" target="_blank" class="post-ig-link">View on IG →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- POST 5 -->
+      <div class="post-card reveal" data-tag="product">
+        <div class="single-img">
+          <img src="mouse-ad.jpg" alt="Mouse Ad">
+        </div>
+        <div class="post-body">
+          <span class="post-category">Product</span>
+          <div class="post-title">Gaming Mouse Ad</div>
+          <p class="post-prompt">Prompt: Dark tech-themed product ad, RGB glow effect on gaming mouse, electric blue accents, premium feel with bold price tag highlight.</p>
+          <div class="post-footer">
+            <span class="post-tag">Product</span>
+            <a href="https://instagram.com/p/REPLACE-POST-ID" target="_blank" class="post-ig-link">View on IG →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- POST 6 -->
+      <div class="post-card reveal reveal-d1" data-tag="invitation">
+        <div class="single-img">
+          <img src="haldi.jpg" alt="Haldi Invitation">
+        </div>
+        <div class="post-body">
+          <span class="post-category">Invitation</span>
+          <div class="post-title">Haldi Ceremony Invite</div>
+          <p class="post-prompt">Prompt: Warm yellow haldi invitation with marigold flowers, traditional Indian motifs, elegant script font, festive and joyful layout for WhatsApp sharing.</p>
+          <div class="post-footer">
+            <span class="post-tag">Invitation</span>
+            <a href="https://instagram.com/p/REPLACE-POST-ID" target="_blank" class="post-ig-link">View on IG →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- NAAVA POSTS UPAR ADD KARO -->
+      <div class="empty-state" id="emptyState">No posts in this category yet.</div>
+
+    </div>
+  </section>
+
+  <!-- ── BOTTOM CTA ── -->
+  <div class="bottom-cta">
+    <div class="bottom-cta-title">Like What You See?<br/><span>Let's Work Together.</span></div>
+    <p class="bottom-cta-sub">Follow on Instagram for daily design posts, tips and behind-the-scenes.</p>
+    <div class="bottom-cta-btns">
+      <a href="index.html" class="btn-portfolio">← View Full Portfolio</a>
+      <a href="https://instagram.com/yourusername" target="_blank" class="btn-ig2">📸 Follow on Instagram</a>
+    </div>
+  </div>
+
+  <script>
+    // Filter
+    const tagBtns = document.querySelectorAll('.tag-btn');
+    const cards   = document.querySelectorAll('.post-card');
+    const empty   = document.getElementById('emptyState');
+
+    tagBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tagBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const tag = btn.getAttribute('data-tag');
+        let visible = 0;
+        cards.forEach((card, i) => {
+          if (tag === 'all' || card.getAttribute('data-tag') === tag) {
+            card.classList.remove('hidden');
+            card.style.animationDelay = (visible * 0.06) + 's';
+            card.style.animation = 'none';
+            card.offsetHeight;
+            card.style.animation = 'cardIn 0.35s ease forwards';
+            visible++;
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+        empty.classList.toggle('show', visible === 0);
+      });
+    });
+
+    // Scroll Reveal
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+
+</body>
+</html>
